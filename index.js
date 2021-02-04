@@ -1,6 +1,6 @@
-import { company, commerce } from 'faker';
+var faker = require('faker');
 
-export function handler(event, context) {
+exports.handler = function(event, context) {
     var inventory = [];
     for (i = 0; i< 10; i++){
         var shoe = {};
@@ -16,15 +16,15 @@ export function handler(event, context) {
     context.succeed(inventory);
 }
 function getShoeName(shoeType){
-    return company.catchPhraseNoun() + " " + company.catchPhraseDescriptor() + " " + shoeType;
+    return faker.company.catchPhraseNoun() + " " + faker.company.catchPhraseDescriptor() + " " + shoeType;
 }
 
 function getShoeColor(){
-    return commerce.color();
+    return faker.commerce.color();
 }
 
 function getShoeDescription(shoeType){
-    return "A(n) " + commerce.productAdjective() + ", "+ shoeType + "made of " + commerce.productMaterial();
+    return "A(n) " + faker.commerce.productAdjective() + ", "+ shoeType + "made of " + faker.commerce.productMaterial();
 }
 
 function getShoeSize(){
@@ -32,7 +32,7 @@ function getShoeSize(){
 }
 
 function getShoePrice(){
-    return commerce.price();
+    return faker.commerce.price();
 }
 
 function getShoeType(){
